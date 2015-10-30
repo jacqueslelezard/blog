@@ -1,0 +1,40 @@
+<head>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/justified-nav/justified-nav.css" rel="stylesheet">
+    <style type="text/css">
+    .modal-backdrop{
+        z-index: 0!important;
+    }
+    </style>
+</head>
+
+<body class="container" ng-controller="HomeCtrl">
+
+    <div >
+        <div class="jumbotron" style="padding-bottom:0px;">
+            <h2>AngularJS & Firebase App!</h2>
+        </div>
+        <form class="form-signin" role="form" name="loginForm">
+           <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" ng-model="user.email">
+                <p ng-show="loginForm.email.$invalid">Unknown email.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : regForm.password.$invalid }">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="3">
+                <p ng-show="loginForm.password.$invalid">Invalid password.</p>
+            </div>
+            <label class="checkbox">
+                <a href="#/register"> Sign Up</a>
+            </label>
+        <button  ng-disabled="!user.email || !user.password" class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signIn($event)">Sign in</button>
+        <p style="color:red;" ng-show="regError">{{regErrorMessage}}</p>
+      </form>
+
+    </div>
+
+
+
+</body>
